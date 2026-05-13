@@ -25,7 +25,7 @@ public class LoginControllerTest {
     void deveRealizarLoginComSucesso() {
         when(loginService.autenticar("admin", "123")).thenReturn(true);
         ResponseEntity<String> response = loginController.login("admin", "123");
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Login efetuado", response.getBody());
     }
 }
