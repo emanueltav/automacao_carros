@@ -48,4 +48,16 @@ class CarroServiceTest {
         assertTrue(carroEncontrado.isPresent());
         assertEquals(2022, carroEncontrado.get().getAno());
     }
+
+    @Test
+    void deveAtualizarCarroComSucesso() {
+        when(carroRepository.save(any(Carro.class))).thenReturn(carro);
+        Carro carroAtualizado = carroService.update(carro);
+        assertNotNull(carroAtualizado);
+    }
+
+    @Test
+    void deveDeletarCarroComSucesso() {
+        carroService.deleteById(1L);
+    }
 }

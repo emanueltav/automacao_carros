@@ -50,4 +50,17 @@ class CarroControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Corolla", response.getBody().getModelo());
     }
+
+    @Test
+    void deveRetornarStatusOkAoAtualizarCarro() {
+        when(carroService.update(any(Carro.class))).thenReturn(carro);
+        ResponseEntity<Carro> response = carroController.atualizarCarro(1L, carro);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
+    void deveRetornarStatusNoContentAoDeletarCarro() {
+        ResponseEntity<Void> response = carroController.deletarCarro(1L);
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+    }
 }
